@@ -1,0 +1,81 @@
+<head>
+    <script>
+function computerPlay() {
+min = Math.ceil(0);
+max = Math.floor(3);
+let action = Math.floor(Math.random() * (3 - 0)) + 0;
+  if (action == 0) {
+  return "pierre"
+}
+  else if (action == 1) {
+  return "feuille"
+}
+  else{
+  return "ciseau"
+}
+}
+
+function manche(computerSelection,gamerSelection) {
+if ((computerSelection == "ciseau")&&(gamerSelection == "feuille")) {
+console.log("Vous avez perdu, le ciseau coupe la feuille");
+return "Défaite...";
+}
+else if ((computerSelection == "ciseau")&&(gamerSelection == "pierre")) {
+    console.log("Vous avez gagné, la pierre écrase le ciseau");
+return "Victoire !";
+}
+else if ((computerSelection == "pierre")&&(gamerSelection == "feuille")) {
+    console.log("Vous avez gagné, la feuille recouvre la pierre");
+return "Victoire !";
+}
+else if ((computerSelection == "pierre")&&(gamerSelection == "ciseau")) {
+    console.log("Vous avez perdu, la pierre écrase le ciseau");
+return "Défaite...";
+}
+else if ((computerSelection == "feuille")&&(gamerSelection == "pierre")) {
+    console.log("Vous avez perdu, la feuille recouvre la pierre");
+return "Défaite...";
+}
+else if ((computerSelection == "feuille")&&(gamerSelection == "ciseau")) {
+    console.log("Vous avez perdu, le ciseau coupe la feuille");
+return "Victoire !";
+}
+else if (computerSelection == gamerSelection ) {
+    console.log("Egalité !");
+}
+else{
+    console.log("erreur, veuillez choisir 'pierre, feuille ou ciseau'");
+}
+}
+
+
+
+function jeu() {
+    let computerScore = 0;
+    let gamerScore = 0;
+    
+ for (let x = 0; x < 5; x++) {
+    let computerSelection = computerPlay();
+    let gamerSelection = prompt ("pierre, feuille ou ciseau ?");
+    let résultat = manche(computerSelection,gamerSelection);
+    if (résultat == "Défaite...") {
+        computerScore++;
+    }else if (résultat == "Victoire !") {
+        gamerScore++;
+    }else {
+        continue;
+    } 
+}
+       
+if (gamerScore > computerScore) {
+    alert("Vous avez gagné cette partie ! ");
+}
+else if (gamerScore < computerScore) {
+    alert("L'ordinateur a gagné cette partie...");
+}
+else {
+    alert("Vous êtes à égalité avec l'ordinateur !");
+}
+}
+    </script>
+</head>
